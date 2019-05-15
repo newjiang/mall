@@ -23,6 +23,7 @@
         <module>evaluation</module>
         <module>manage</module>
         <module>logistics</module>
+        <module>common</module>
     </modules>
 
     <properties>
