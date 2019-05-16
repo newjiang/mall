@@ -1,9 +1,9 @@
-package com.shao.mall.order.code;
+package com.shao.mall.common;
 
 /**
  * @author newjiang
  * @date 2019/5/15 23:45
- * @description: TODO
+ * @description: 前端返回的提示信息枚举
  */
 public enum MessageEnum {
 
