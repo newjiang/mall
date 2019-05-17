@@ -24,6 +24,7 @@
         <module>manage</module>
         <module>logistics</module>
         <module>common</module>
+        <module>register</module>
     </modules>
 
     <properties>

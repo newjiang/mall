@@ -1,6 +1,13 @@
 spring:
+  profiles:
+    active: pro
+---
+server:
+  port: 8081
+spring:
+  profiles: pro
   application:
-    name: springcloud-provider
+    name: order-application-dev
   datasource:
     # 当前数据源操作类型
     type: com.alibaba.druid.pool.DruidDataSource
@@ -19,3 +26,33 @@ spring:
       max-total: 5
       # 等待连接获取的最大超时时间
       max-wait-millis: 200
+  security:
+    user:
+      password: user
+      name: user
+  boot:
+    admin:
+      client:
+        password: user
+        instance:
+          prefer-ip: true
+          metadata:
+            user:
+              password: user
+              name: user
+        username: user
+eureka:
+  # 客户端-注册到eureka服务
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+  instance:
+    instance-id: order-application-pro
+    # 显示IP地址
+    prefer-ip-address: true
+
+info:
+  app.name: order-application-dev
+  company.name: shao
+  build.artifactId: @project.artifactId@
+  build.version: @project.version@
