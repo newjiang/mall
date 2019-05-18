@@ -1,13 +1,15 @@
 spring:
   profiles:
-    active: pro
+    active: dev
+
+# 开发环境
 ---
 server:
-  port: 8081
+  port: 8005
 spring:
-  profiles: pro
+  profiles: dev
   application:
-    name: order-application-dev
+    name: order-server
   datasource:
     # 当前数据源操作类型
     type: com.alibaba.druid.pool.DruidDataSource
@@ -33,26 +35,95 @@ spring:
   boot:
     admin:
       client:
-        password: user
+        url: http://localhost:7777
+        username: order
+        password: order
         instance:
           prefer-ip: true
-          metadata:
-            user:
-              password: user
-              name: user
-        username: user
 eureka:
   # 客户端-注册到eureka服务
   client:
     service-url:
       defaultZone: http://localhost:7001/eureka/
   instance:
-    instance-id: order-application-pro
+    instance-id: order-server
     # 显示IP地址
     prefer-ip-address: true
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
 info:
-  app.name: order-application-dev
+  app.name: 订单服务
+  company.name: shao
+  build.artifactId: @project.artifactId@
+  build.version: @project.version@
+
+# 生产环境
+---
+server:
+  port: 9005
+spring:
+  profiles: pro
+  application:
+    name: order-server
+  datasource:
+    # 当前数据源操作类型
+    type: com.alibaba.druid.pool.DruidDataSource
+    # mysql驱动包
+    driver-class-name: org.gjt.mm.mysql.Driver
+    # 数据库名称
+    url: jdbc:mysql://localhost:3306/cloud1
+    username: root
+    password: root
+    dbcp2:
+      # 数据库连接池的最小维持连接数
+      min-idle: 5
+      # 初始化连接数
+      initial-size: 5
+      # 最大连接数
+      max-total: 5
+      # 等待连接获取的最大超时时间
+      max-wait-millis: 200
+  security:
+    user:
+      password: user
+      name: user
+  boot:
+    admin:
+      client:
+        url: http://localhost:7777
+        username: order
+        password: order
+        instance:
+          prefer-ip: true
+eureka:
+  # 客户端-注册到eureka服务
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+  instance:
+    instance-id: order-server
+    # 显示IP地址
+    prefer-ip-address: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+info:
+  app.name: 订单服务
   company.name: shao
   build.artifactId: @project.artifactId@
   build.version: @project.version@

@@ -1,0 +1,37 @@
+server:
+  port: 7777
+
+spring:
+  application:
+    name: monitor-server
+  security:
+    user:
+      name: root
+      password: root
+
+eureka:
+  instance:
+    instance-id: monitor-server
+    metadata-map:
+      user:
+        name: ${spring.security.user.name}
+        password: ${spring.security.user.password}
+    health-check-url-path: /actuator/health
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:7001/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+info:
+  app.name: 监控中心
+  company.name: shao
+  build.artifactId: @project.artifactId@
+  build.version: @project.version@

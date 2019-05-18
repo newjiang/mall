@@ -9,7 +9,7 @@ server:
 spring:
   profiles: dev
   application:
-    name: register-application-dev
+    name: register-server
  
 eureka: 
   instance:
@@ -31,7 +31,7 @@ server:
 spring:
   profiles: pro
   application:
-    name: register-application-pro
+    name: register-server
 
 eureka:
   instance:
@@ -45,6 +45,7 @@ eureka:
     service-url:
       # 集群情况
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
       
  
 

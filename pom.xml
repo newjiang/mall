@@ -25,6 +25,7 @@
         <module>logistics</module>
         <module>common</module>
         <module>register</module>
+        <module>monitor</module>
     </modules>
 
     <properties>
@@ -75,6 +76,24 @@
                 <groupId>com.github.pagehelper</groupId>
                 <artifactId>pagehelper-spring-boot-starter</artifactId>
                 <version>1.2.10</version>
+            </dependency>
+            <!-- spring boot admin client -->
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-client</artifactId>
+                <version>2.0.3</version>
+            </dependency>
+            <!-- spring boot admin server -->
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-server</artifactId>
+                <version>2.0.3</version>
+            </dependency>
+            <!-- spring boot admin ui -->
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-server-ui</artifactId>
+                <version>2.0.3</version>
             </dependency>
             <!-- lombok -->
             <dependency>
