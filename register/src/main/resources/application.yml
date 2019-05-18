@@ -7,7 +7,7 @@ server:
   port: 7001
 
 spring:
-  profiles: pro
+  profiles: dev
   application:
     name: register-application-dev
  
