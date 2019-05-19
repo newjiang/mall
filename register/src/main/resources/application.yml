@@ -2,6 +2,7 @@ spring:
   profiles:
     active: dev
 
+# 开发环境
 ---
 server:
   port: 7001
@@ -9,21 +10,18 @@ server:
 spring:
   profiles: dev
   application:
-    name: register-server
+    name: register-server-${spring.profiles}
  
 eureka: 
   instance:
-    # eureka服务端的实例名称
-    hostname: localhost
+    hostname: localhost           # eureka服务端的实例名称
   client:
-    # false:表示不需要向注册中心注册自己(默认)
-    register-with-eureka: false
-    # false:表示自己是注册中心，负责维护服务实例，不需要去检索服务
-    fetch-registry: false
-    service-url: 
-      # 集群情况
+    register-with-eureka: false   # false:表示不需要向注册中心注册自己(默认)
+    fetch-registry: false         # false:表示自己是注册中心，负责维护服务实例，不需要去检索服务
+    service-url:                  # 集群情况
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 
+# 生产环境
 ---
 server:
   port: 9001
@@ -31,19 +29,15 @@ server:
 spring:
   profiles: pro
   application:
-    name: register-server
+    name: register-server-${spring.profiles}
 
 eureka:
   instance:
-    # eureka服务端的实例名称
-    hostname: localhost
+    hostname: localhost           # eureka服务端的实例名称
   client:
-    # false:表示不需要向注册中心注册自己(默认)
-    register-with-eureka: false
-    # false:表示自己是注册中心，负责维护服务实例，不需要去检索服务
-    fetch-registry: false
-    service-url:
-      # 集群情况
+    register-with-eureka: false   # false:表示不需要向注册中心注册自己(默认)
+    fetch-registry: false         # false:表示自己是注册中心，负责维护服务实例，不需要去检索服务
+    service-url:                  # 集群情况
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 
       

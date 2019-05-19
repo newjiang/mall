@@ -1,4 +1,4 @@
-package com.shao.mall.common;
+package com.shao.mall.common.utils;
 import com.dyuproject.protostuff.LinkedBuffer;
 import com.dyuproject.protostuff.ProtostuffIOUtil;
 import com.dyuproject.protostuff.Schema;

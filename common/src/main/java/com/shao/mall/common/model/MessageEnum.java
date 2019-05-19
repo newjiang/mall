@@ -1,4 +1,4 @@
-package com.shao.mall.common;
+package com.shao.mall.common.model;
 
 /**
  * @author newjiang
@@ -7,8 +7,8 @@ package com.shao.mall.common;
  */
 public enum MessageEnum {
 
-    success("success"),
-    failure("failure");
+    SUCCESS("success"),
+    FAILURE("failure");
 
     private String value;
 

@@ -10,7 +10,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  * @date 2019/5/13 23:10
  * @description: 订单模块的启动类
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.shao.mall")
 @EnableEurekaClient
 public class OrderApplication {
 

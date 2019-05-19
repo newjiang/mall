@@ -1,13 +1,15 @@
-package com.shao.mall.common;
+package com.shao.mall.common.model;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @author newjiang
  * @date 2019/5/15 22:53
  * @description: 统一返回格式的工具类
  */
-@Data
+@Setter
+@Getter
 public class Result<T> {
 
     // 是否成功的标志
@@ -36,7 +38,7 @@ public class Result<T> {
      */
     public static <T> Result<T> success(T t) {
         Result<T> result = new Result<>();
-        result.setMessage(MessageEnum.success.getValue());
+        result.setMessage(MessageEnum.SUCCESS.getValue());
         result.setSuccess(true);
         result.setData(t);
         return result;
@@ -53,6 +55,20 @@ public class Result<T> {
         Result<T> result = new Result<>();
         result.setSuccess(false);
         result.setMessage(message);
+        return result;
+    }
+
+    /**
+     * 系统错误的返回格式
+     *
+     * @param error
+     * @param <T>
+     * @return
+     */
+    public static <T> Result<T> error(String error) {
+        Result<T> result = new Result<>();
+        result.setSuccess(false);
+        result.setMessage(error);
         return result;
     }
 
