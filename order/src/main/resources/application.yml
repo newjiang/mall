@@ -6,6 +6,7 @@ spring:
 ---
 server:
   port: 8005
+
 spring:
   profiles: dev
   application:
@@ -13,7 +14,7 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource  # 当前数据源操作类型
     driver-class-name: org.gjt.mm.mysql.Driver    # mysql驱动包
-    url: jdbc:mysql://localhost:3306/cloud1       # 数据库名称
+    url: jdbc:mysql://localhost:3306/shao       # 数据库名称
     username: root
     password: root
     dbcp2:
@@ -33,6 +34,16 @@ spring:
         password: ${spring.security.user.password}
         instance:
           prefer-ip: true
+
+# mybatis
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  type-aliases-package: com.jiang.springcloud.api.model # 所有Entity别名类所在包
+  mapper-locations:                                     # mapper映射文件
+    - classpath:mybatis/mapper/**/*.xml
+
+# 注册中心
 eureka:
   client:                     # 客户端-注册到eureka服务
     service-url:
@@ -50,11 +61,17 @@ management:
     health:
       show-details: ALWAYS
 
+# 控制台输出SQL
+logging:
+  level:
+    com.shao.mall: DEBUG
+
 info:
   app.name: 订单服务
   company.name: shao
   build.artifactId: @project.artifactId@
   build.version: @project.version@
+
 
 # 生产环境
 ---
@@ -109,3 +126,7 @@ info:
   company.name: shao
   build.artifactId: @project.artifactId@
   build.version: @project.version@
+
+logging:
+  level:
+    com.shao.mall: DEBUG

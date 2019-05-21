@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shao.mall.order.dao.OrderMapper">
+
+	<insert id="insert" parameterType="com.shao.mall.order.model.Order"
+			useGeneratedKeys="true" keyProperty="orderId">
+		INSERT INTO `t_order` (
+		  `order_id`,
+		  `user_id`,
+		  `order_status_id`,
+		  `create_time`,
+		  `completed_time`,
+		  `total_count`,
+		  `actual_count`,
+		  `post_count`,
+		  `payment_type`
+		)
+		VALUES
+		  (
+			#{orderId},
+			#{userId},
+			#{orderStatusId},
+			#{createTime},
+			#{completedTime},
+			#{totalCount},
+			#{actualCount},
+			#{postCount},
+			#{paymentType}
+		  )
+	</insert>
+
+	<delete id="delete" parameterType="int">
+		delete from t_order where order_id = #{orderId}
+	</delete>
+
+	<select id="find" parameterType="int"
+			resultType="com.shao.mall.order.model.Order">
+		SELECT * FROM t_order WHERE order_id = #{orderId};
+	</select>
+
+	<!--修改-->
+	<update id="update">
+		UPDATE t_order
+		<set>
+			<foreach item="value" index="key" collection="map" separator=",">
+				<if test="key != 'ORDER_ID' and value != null">
+					${key}= #{value}
+				</if>
+			</foreach>
+		</set>
+		WHERE order_id = #{id}
+	</update>
+</mapper>
+ 
+

@@ -11,7 +11,7 @@ USE `demo`;
 */
 DROP TABLE IF EXISTS `t_activity`;
 CREATE TABLE `t_activity` (
-  `activity_id` int(11) NOT NULL COMMENT '活动ID',
+  `activity_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '活动ID',
   `shop_id` int(11) DEFAULT NULL COMMENT '店铺ID',
   `activity_name` varchar(255) COLLATE utf8_bin DEFAULT NULL COMMENT '活动名称',
   `introduction` varchar(255) COLLATE utf8_bin DEFAULT NULL COMMENT '活动介绍',
@@ -29,7 +29,7 @@ CREATE TABLE `t_activity` (
 */
 DROP TABLE IF EXISTS `t_address`;
 CREATE TABLE `t_address` (
-  `address_id` int(11) NOT NULL COMMENT '地址ID',
+  `address_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '地址ID',
   `user_id` int(11) DEFAULT NULL COMMENT '用户ID',
   `province` varchar(100) COLLATE utf8_bin DEFAULT NULL COMMENT '省',
   `city` varchar(100) COLLATE utf8_bin DEFAULT NULL COMMENT '市',
@@ -49,7 +49,7 @@ CREATE TABLE `t_address` (
 */
 DROP TABLE IF EXISTS `t_attribute`;
 CREATE TABLE `t_attribute` (
-  `attribute_id` int(11) NOT NULL COMMENT '属性ID',
+  `attribute_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '属性ID',
   `sort_id` int(11) DEFAULT NULL COMMENT '分类ID',
   `attribute_name` varchar(255) COLLATE utf8_bin DEFAULT NULL COMMENT '属性名称',
   PRIMARY KEY (`attribute_id`),
@@ -64,7 +64,7 @@ CREATE TABLE `t_attribute` (
 */
 DROP TABLE IF EXISTS `t_attribute_item`;
 CREATE TABLE `t_attribute_item` (
-  `attribute_item_id` int(11) NOT NULL COMMENT '属性选项ID',
+  `attribute_item_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '属性选项ID',
   `attribute_id` int(11) DEFAULT NULL COMMENT '属性ID',
   `attribute_value` varchar(255) COLLATE utf8_bin DEFAULT NULL COMMENT '属性的值',
   PRIMARY KEY (`attribute_item_id`),
@@ -77,7 +77,7 @@ CREATE TABLE `t_attribute_item` (
 */
 DROP TABLE IF EXISTS `t_attribute_item_spu`;
 CREATE TABLE `t_attribute_item_spu` (
-  `attr_sku_id` int(11) NOT NULL,
+  `attr_sku_id` int(11) NOT NULL AUTO_INCREMENT,
   `spu_id` int(11) DEFAULT NULL,
   `attribute_item_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`attr_sku_id`),
@@ -93,7 +93,7 @@ CREATE TABLE `t_attribute_item_spu` (
 */
 DROP TABLE IF EXISTS `t_auth`;
 CREATE TABLE `t_auth` (
-  `auth_id` int(11) NOT NULL COMMENT '权限ID',
+  `auth_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '权限ID',
   `auth_name` varchar(255) COLLATE utf8_bin DEFAULT NULL COMMENT '权限名称',
   `auth_code` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT '权限码',
   `auth_level` int(11) DEFAULT NULL COMMENT '权限等级',
@@ -107,7 +107,7 @@ CREATE TABLE `t_auth` (
 */
 DROP TABLE IF EXISTS `t_brand`;
 CREATE TABLE `t_brand` (
-  `brand_id` int(11) NOT NULL COMMENT '品牌ID',
+  `brand_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '品牌ID',
   `brand` varchar(255) COLLATE utf8_bin DEFAULT NULL COMMENT '品牌名称',
   `brand_code` varchar(255) COLLATE utf8_bin DEFAULT NULL COMMENT '品牌码',
   `create_time` timestamp NULL DEFAULT NULL COMMENT '创建时间',
@@ -125,7 +125,7 @@ CREATE TABLE `t_brand` (
 */
 DROP TABLE IF EXISTS `t_cart`;
 CREATE TABLE `t_cart` (
-  `cart_id` int(11) NOT NULL COMMENT '购物车ID',
+  `cart_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '购物车ID',
   `user_id` int(11) DEFAULT NULL COMMENT '用户ID',
   `sku_id` int(11) DEFAULT NULL COMMENT 'SKU_ID',
   `create_time` timestamp NULL DEFAULT NULL COMMENT '创建时间',
@@ -143,7 +143,7 @@ CREATE TABLE `t_cart` (
 */
 DROP TABLE IF EXISTS `t_collection`;
 CREATE TABLE `t_collection` (
-  `collection_id` int(11) NOT NULL COMMENT '收藏ID',
+  `collection_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '收藏ID',
   `user_id` int(11) DEFAULT NULL COMMENT '用户',
   `sku_id` int(11) DEFAULT NULL COMMENT 'SKU_ID',
   `shop_id` int(11) DEFAULT NULL COMMENT '店铺',
@@ -161,7 +161,7 @@ CREATE TABLE `t_collection` (
 */
 DROP TABLE IF EXISTS `t_coupon`;
 CREATE TABLE `t_coupon` (
-  `coupon_id` int(11) NOT NULL COMMENT '优惠',
+  `coupon_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '优惠',
   `shop_id` int(11) DEFAULT NULL COMMENT '店铺ID',
   `activity_id` int(11) DEFAULT NULL COMMENT '活动',
   `coupon_name` varchar(255) COLLATE utf8_bin DEFAULT NULL COMMENT '优惠名称',
@@ -183,7 +183,7 @@ CREATE TABLE `t_coupon` (
 */
 DROP TABLE IF EXISTS `t_evaluation`;
 CREATE TABLE `t_evaluation` (
-  `eval_id` int(11) NOT NULL COMMENT '评价',
+  `eval_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '评价',
   `order_item_id` int(11) DEFAULT NULL COMMENT '订单ID',
   `content` varchar(1024) COLLATE utf8_bin DEFAULT NULL COMMENT '评论内容',
   `pic1` varchar(255) COLLATE utf8_bin DEFAULT NULL COMMENT '晒图1',
@@ -214,7 +214,7 @@ CREATE TABLE `t_evaluation` (
 */
 DROP TABLE IF EXISTS `t_footprint`;
 CREATE TABLE `t_footprint` (
-  `footprint_id` int(11) NOT NULL COMMENT '足迹ID',
+  `footprint_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '足迹ID',
   `user_id` int(11) DEFAULT NULL COMMENT '用户ID',
   `sku_id` int(11) DEFAULT NULL COMMENT 'SKU_ID',
   `create_time` timestamp NULL DEFAULT NULL COMMENT '创建时间',
@@ -231,7 +231,7 @@ CREATE TABLE `t_footprint` (
 */
 DROP TABLE IF EXISTS `t_logistics`;
 CREATE TABLE `t_logistics` (
-  `logistics_id` int(11) NOT NULL COMMENT '物流',
+  `logistics_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '物流',
   `order_item_id` int(11) DEFAULT NULL COMMENT '订单项ID',
   `logistics_status_id` int(11) DEFAULT NULL COMMENT '物流状态ID',
   `province` varchar(100) COLLATE utf8_bin DEFAULT NULL COMMENT '当前省',
@@ -254,7 +254,7 @@ CREATE TABLE `t_logistics` (
 */
 DROP TABLE IF EXISTS `t_logistics_status`;
 CREATE TABLE `t_logistics_status` (
-  `logistics_status_id` int(11) NOT NULL COMMENT '物流状态ID',
+  `logistics_status_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '物流状态ID',
   `logistics_status` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT '物流状态名称',
   `logistics_code` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT '物流码',
   PRIMARY KEY (`logistics_status_id`)
@@ -267,7 +267,7 @@ CREATE TABLE `t_logistics_status` (
 */
 DROP TABLE IF EXISTS `t_merchant`;
 CREATE TABLE `t_merchant` (
-  `merchant_id` int(11) NOT NULL COMMENT '商家ID',
+  `merchant_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '商家ID',
   `merchant` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT '商家名字',
   `id_number` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '身份证号',
   `gender` varchar(3) COLLATE utf8_bin DEFAULT NULL COMMENT '性别',
@@ -291,7 +291,7 @@ CREATE TABLE `t_merchant` (
 */
 DROP TABLE IF EXISTS `t_order`;
 CREATE TABLE `t_order` (
-  `order_id` int(11) NOT NULL COMMENT '订单',
+  `order_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '订单',
   `user_id` int(11) DEFAULT NULL COMMENT '用户ID',
   `order_status_id` int(11) DEFAULT NULL COMMENT '订单状态',
   `create_time` timestamp NULL DEFAULT NULL COMMENT '创建时间',
@@ -315,7 +315,7 @@ CREATE TABLE `t_order` (
 */
 DROP TABLE IF EXISTS `t_order_item`;
 CREATE TABLE `t_order_item` (
-  `order_item_id` int(11) NOT NULL COMMENT '订单项ID',
+  `order_item_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '订单项ID',
   `order_id` int(11) DEFAULT NULL COMMENT '订单',
   `sku_id` int(11) DEFAULT NULL COMMENT 'SKU_ID',
   `address_id` int(11) DEFAULT NULL COMMENT '地址',
@@ -335,7 +335,7 @@ CREATE TABLE `t_order_item` (
 */
 DROP TABLE IF EXISTS `t_order_status`;
 CREATE TABLE `t_order_status` (
-  `order_status_id` int(11) NOT NULL COMMENT '订单状态ID',
+  `order_status_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '订单状态ID',
   `order_status` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT '订单状态',
   `order_code` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT '订单状态码',
   PRIMARY KEY (`order_status_id`)
@@ -348,7 +348,7 @@ CREATE TABLE `t_order_status` (
 */
 DROP TABLE IF EXISTS `t_payment`;
 CREATE TABLE `t_payment` (
-  `pay_id` int(11) NOT NULL COMMENT '支付ID',
+  `pay_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '支付ID',
   `order_id` int(11) DEFAULT NULL COMMENT '订单ID',
   `user_id` int(11) DEFAULT NULL COMMENT '用户',
   `payment_status_id` int(11) DEFAULT NULL COMMENT '支付状态ID',
@@ -368,7 +368,7 @@ CREATE TABLE `t_payment` (
 */
 DROP TABLE IF EXISTS `t_role`;
 CREATE TABLE `t_role` (
-  `role_id` int(11) NOT NULL COMMENT '角色ID',
+  `role_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '角色ID',
   `role_name` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT '角色名称',
   `role_level` int(11) DEFAULT NULL COMMENT '角色等级',
   `role_code` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT '角色码',
@@ -381,7 +381,7 @@ CREATE TABLE `t_role` (
 */
 DROP TABLE IF EXISTS `t_role_auth`;
 CREATE TABLE `t_role_auth` (
-  `role_auth_id` int(11) NOT NULL COMMENT '角色权限ID',
+  `role_auth_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '角色权限ID',
   `auth_id` int(11) DEFAULT NULL COMMENT '权限ID',
   `role_id` int(11) DEFAULT NULL COMMENT '角色ID',
   PRIMARY KEY (`role_auth_id`),
@@ -399,7 +399,7 @@ CREATE TABLE `t_role_auth` (
 */
 DROP TABLE IF EXISTS `t_shop`;
 CREATE TABLE `t_shop` (
-  `shop_id` int(11) NOT NULL COMMENT '店铺ID',
+  `shop_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '店铺ID',
   `merchant_id` int(11) DEFAULT NULL COMMENT '商家ID',
   `shop_name` varbinary(255) DEFAULT NULL COMMENT '店铺名称',
   `province` varbinary(255) DEFAULT NULL COMMENT '省',
@@ -420,7 +420,7 @@ CREATE TABLE `t_shop` (
 *用于描述店铺与活动多对多关系
 */DROP TABLE IF EXISTS `t_shop_activity`;
 CREATE TABLE `t_shop_activity` (
-  `shop_activity_id` int(11) NOT NULL COMMENT '商家活动ID',
+  `shop_activity_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '商家活动ID',
   `shop_id` int(11) DEFAULT NULL COMMENT '商家ID',
   `activity_id` int(11) DEFAULT NULL COMMENT '活动ID',
   PRIMARY KEY (`shop_activity_id`),
@@ -434,7 +434,7 @@ CREATE TABLE `t_shop_activity` (
 */
 DROP TABLE IF EXISTS `t_shop_sku`;
 CREATE TABLE `t_shop_sku` (
-  `shop_sku_id` int(11) NOT NULL COMMENT '店铺SKU_ID',
+  `shop_sku_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '店铺SKU_ID',
   `sku_id` int(11) DEFAULT NULL COMMENT 'SKU_ID',
   `shop_id` int(11) DEFAULT NULL COMMENT '店铺ID',
   PRIMARY KEY (`shop_sku_id`),
@@ -455,7 +455,7 @@ CREATE TABLE `t_shop_sku` (
 */
 DROP TABLE IF EXISTS `t_sku`;
 CREATE TABLE `t_sku` (
-  `sku_id` int(11) NOT NULL COMMENT 'SKU_ID',
+  `sku_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'SKU_ID',
   `spu_id` int(11) DEFAULT NULL COMMENT 'SPU_ID',
   `sku_name` varchar(100) COLLATE utf8_bin DEFAULT NULL COMMENT 'SKU名称',
   `sku_code` varchar(100) COLLATE utf8_bin DEFAULT NULL COMMENT 'SKU编码',
@@ -475,7 +475,7 @@ CREATE TABLE `t_sku` (
 */
 DROP TABLE IF EXISTS `t_sort`;
 CREATE TABLE `t_sort` (
-  `sort_id` int(11) NOT NULL COMMENT '分类ID',
+  `sort_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '分类ID',
   `parent_id` int(11) DEFAULT NULL COMMENT '父ID',
   `is_parent` tinyint(4) DEFAULT NULL COMMENT '是否是父节点',
   `sort_name` varchar(100) COLLATE utf8_bin DEFAULT NULL COMMENT '分类名称',
@@ -489,7 +489,7 @@ CREATE TABLE `t_sort` (
 */
 DROP TABLE IF EXISTS `t_spec_group`;
 CREATE TABLE `t_spec_group` (
-  `spec_group_id` int(11) NOT NULL COMMENT '规格组ID',
+  `spec_group_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '规格组ID',
   `group_name` varchar(255) COLLATE utf8_bin DEFAULT NULL COMMENT '规格组名称',
   `create_time` timestamp NULL DEFAULT NULL COMMENT '创建时间',
   `update_time` timestamp NULL DEFAULT NULL COMMENT '更改时间',
@@ -504,7 +504,7 @@ CREATE TABLE `t_spec_group` (
 */
 DROP TABLE IF EXISTS `t_spec_item`;
 CREATE TABLE `t_spec_item` (
-  `spec_item_id` int(11) NOT NULL COMMENT '规格选项ID',
+  `spec_item_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '规格选项ID',
   `spec_id` int(11) DEFAULT NULL COMMENT '规格ID',
   `spec_value` varchar(255) COLLATE utf8_bin DEFAULT NULL COMMENT '规格值',
   PRIMARY KEY (`spec_item_id`),
@@ -518,7 +518,7 @@ CREATE TABLE `t_spec_item` (
 */
 DROP TABLE IF EXISTS `t_spec_item_sku`;
 CREATE TABLE `t_spec_item_sku` (
-  `spec_item_sku_id` int(11) NOT NULL,
+  `spec_item_sku_id` int(11) NOT NULL AUTO_INCREMENT,
   `spec_item_id` int(11) DEFAULT NULL,
   `sku_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`spec_item_sku_id`),
@@ -535,7 +535,7 @@ CREATE TABLE `t_spec_item_sku` (
 */
 DROP TABLE IF EXISTS `t_specification`;
 CREATE TABLE `t_specification` (
-  `spec_id` int(11) NOT NULL COMMENT '规格ID',
+  `spec_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '规格ID',
   `sort_id` int(11) DEFAULT NULL COMMENT '分类ID',
   `spec_group_id` int(11) DEFAULT NULL COMMENT '规格组',
   `spec_name` varchar(255) COLLATE utf8_bin DEFAULT NULL COMMENT '参数名称',
@@ -554,7 +554,7 @@ CREATE TABLE `t_specification` (
 */
 DROP TABLE IF EXISTS `t_spu`;
 CREATE TABLE `t_spu` (
-  `spu_id` int(11) NOT NULL COMMENT 'SPU_ID',
+  `spu_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'SPU_ID',
   `sort_id` int(11) DEFAULT NULL COMMENT '分类ID',
   `product_name` varchar(100) COLLATE utf8_bin DEFAULT NULL COMMENT '产品名称',
   `spu_code` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT '产品编码',
@@ -579,7 +579,7 @@ CREATE TABLE `t_spu` (
 */
 DROP TABLE IF EXISTS `t_user`;
 CREATE TABLE `t_user` (
-  `user_id` int(11) NOT NULL COMMENT '用户ID',
+  `user_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户ID',
   `username` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT '用户名',
   `password` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT '密码',
   `phone` varchar(11) COLLATE utf8_bin DEFAULT NULL COMMENT '手机',
@@ -596,7 +596,7 @@ CREATE TABLE `t_user` (
 */
 DROP TABLE IF EXISTS `t_user_activity`;
 CREATE TABLE `t_user_activity` (
-  `user_activity_id` int(11) NOT NULL COMMENT '用户活动ID',
+  `user_activity_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户活动ID',
   `user_id` int(11) DEFAULT NULL COMMENT '用户',
   `activity_id` int(11) DEFAULT NULL COMMENT '活动ID',
   PRIMARY KEY (`user_activity_id`),
@@ -610,7 +610,7 @@ CREATE TABLE `t_user_activity` (
 */
 DROP TABLE IF EXISTS `t_user_auth`;
 CREATE TABLE `t_user_auth` (
-  `user_auth_id` int(11) NOT NULL COMMENT '用户权限ID',
+  `user_auth_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户权限ID',
   `user_id` int(11) DEFAULT NULL COMMENT '用户ID',
   `auth_id` int(11) DEFAULT NULL COMMENT '权限',
   PRIMARY KEY (`user_auth_id`),
@@ -624,7 +624,7 @@ CREATE TABLE `t_user_auth` (
 */
 DROP TABLE IF EXISTS `t_user_coupon`;
 CREATE TABLE `t_user_coupon` (
-  `user_coupon_id` int(11) NOT NULL COMMENT '用户优惠ID',
+  `user_coupon_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户优惠ID',
   `user_id` int(11) DEFAULT NULL COMMENT '用户ID',
   `coupon_id` int(11) DEFAULT NULL COMMENT '优惠ID',
   PRIMARY KEY (`user_coupon_id`),
@@ -639,7 +639,7 @@ CREATE TABLE `t_user_coupon` (
 */
 DROP TABLE IF EXISTS `t_user_info`;
 CREATE TABLE `t_user_info` (
-  `user_info_id` int(11) NOT NULL COMMENT '用户信息ID',
+  `user_info_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户信息ID',
   `user_id` int(11) DEFAULT NULL COMMENT '用户ID',
   `wcchat` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT '微信',
   `qq` varchar(12) COLLATE utf8_bin DEFAULT NULL COMMENT 'qq',
@@ -654,7 +654,7 @@ CREATE TABLE `t_user_info` (
 */
 DROP TABLE IF EXISTS `t_user_role`;
 CREATE TABLE `t_user_role` (
-  `user_role_id` int(11) NOT NULL COMMENT '用户角色ID',
+  `user_role_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户角色ID',
   `user_id` int(11) DEFAULT NULL COMMENT '用户ID',
   `role_id` int(11) DEFAULT NULL COMMENT '角色表',
   PRIMARY KEY (`user_role_id`),
