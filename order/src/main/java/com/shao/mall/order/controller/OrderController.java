@@ -21,7 +21,6 @@ public class OrderController {
     @Autowired
     private IOrderService orderService;
 
-
     @RequestMapping(method = RequestMethod.POST)
     public Result<Order> add(Order order) {
         orderService.add(order);

@@ -29,6 +29,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseError customExceptionHandler(HttpServletRequest request, Exception exception, HttpServletResponse response) {
         response.setStatus(HttpStatus.BAD_REQUEST.value());
         BaseException e = (BaseException) exception;
+        logger.error("运行时异常:[" + e.getCode() + ":" + e.getMessage() + "]");
         return new ResponseError(e.getCode(), e.getMessage());
     }
 
@@ -37,6 +38,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseError runtimeExceptionHandler(HttpServletRequest request, HttpServletResponse response, Exception e) {
         response.setStatus(HttpStatus.BAD_REQUEST.value());
         RuntimeException exception = (RuntimeException) e;
+        logger.error("运行时异常:"+e.getMessage());
         return new ResponseError(GlobalException.RUNTIME_EXCEPTION_CODE.getCode(), exception.getMessage());
     }
 
@@ -50,20 +52,22 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
         if (exception instanceof MethodArgumentNotValidException) {
             MethodArgumentNotValidException e = (MethodArgumentNotValidException) exception;
+            logger.error("方法参数无效:" + e.getMessage());
             return new ResponseEntity<>(new ResponseError(status.value(), e.getBindingResult().getAllErrors().get(0).getDefaultMessage()), status);
         }
 
         if (exception instanceof MethodArgumentTypeMismatchException) {
             MethodArgumentTypeMismatchException e = (MethodArgumentTypeMismatchException) exception;
-            System.out.println(
+            logger.error(
                     "参数转换失败:" +
                             "方法:" + e.getParameter().getMethod().getName() + "," +
                             "参数:" + e.getName() + "," +
                             "信息:" + e.getLocalizedMessage());;
             return new ResponseEntity<>(new ResponseError(status.value(), "参数转换异常"), status);
         }
-
-        return new ResponseEntity<>(new ResponseError(status.value(), "参数转换异常"), status);
+        logger.error("接口映射异常:" + exception.getMessage());
+        return new ResponseEntity<>(new ResponseError(status.value(), "接口映射异常:" + exception.getMessage()), status);
     }
+
 }
 

@@ -29,7 +29,7 @@ spring:
   redis:
     password: redis
     database: 0           # Redis默认情况下有16个分片，这里配置具体使用的分片
-    host: 172.22.2.127
+    host: 47.103.20.159
     timeout: 10000        # 连接超时时间（毫秒）
     lettuce:
       pool:
@@ -50,6 +50,9 @@ spring:
         password: ${spring.security.user.password}
         instance:
           prefer-ip: true
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
 
 # mybatis
 mybatis:
@@ -57,7 +60,7 @@ mybatis:
     map-underscore-to-camel-case: true
   type-aliases-package: com.jiang.springcloud.api.model # 所有Entity别名类所在包
   mapper-locations:                                     # mapper映射文件
-    - classpath:mybatis/mapper/**/*.xml
+    - classpath:mapper/**/*.xml
 
 # 注册中心
 eureka:
@@ -81,6 +84,9 @@ management:
 logging:
   level:
     com.shao.mall: DEBUG
+
+
+
 
 info:
   app.name: 订单服务
