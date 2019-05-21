@@ -4,6 +4,9 @@ import com.shao.mall.common.utils.Bean2Map;
 import com.shao.mall.order.dao.OrderMapper;
 import com.shao.mall.order.model.Order;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -24,11 +27,13 @@ public class OrderService implements IOrderService {
         return orderMapper.insert(order);
     }
 
+    @CacheEvict(value = "order", key = "#orderId")
     @Override
     public void delete(int orderId) {
         orderMapper.delete(orderId);
     }
 
+    @CachePut(value = "order", key = "#order.orderId")
     @Override
     public Order update(Order order) {
         Map<String, Object> map = Bean2Map.toMap(order);
@@ -36,6 +41,7 @@ public class OrderService implements IOrderService {
         return find(order.getOrderId());
     }
 
+    @Cacheable(value = "order", key = "#orderId")
     @Override
     public Order find(int orderId) {
         return orderMapper.find(orderId);
