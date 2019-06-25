@@ -15,6 +15,7 @@ import java.util.Map;
  * @description: javabean 转 map
  */
 public class Bean2Map {
+
     public static Map<String, Object> toMap(Object bean) {
 
         BeanInfo beanInfo = null;
@@ -22,8 +23,8 @@ public class Bean2Map {
         if (bean == null) {
             return null;
         }
-        Map<String, Object> map = new HashMap<>();
 
+        Map<String, Object> map = new HashMap<>();
 
         try {
             beanInfo = Introspector.getBeanInfo(bean.getClass());
@@ -51,8 +52,6 @@ public class Bean2Map {
 
         return map;
     }
-
-
 
     /**
      * 驼峰转换为下划线

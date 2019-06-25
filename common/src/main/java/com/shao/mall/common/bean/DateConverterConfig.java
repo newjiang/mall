@@ -1,4 +1,4 @@
-package com.shao.mall.common.code;
+package com.shao.mall.common.bean;
 
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;

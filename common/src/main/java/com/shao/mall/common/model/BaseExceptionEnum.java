@@ -2,18 +2,22 @@ package com.shao.mall.common.model;
 
 /**
  * @author newjiang
- * @date 2019/5/19 18:15
+ * @date 2019/6/3 22:39
  * @description: TODO
  */
-public enum GlobalException {
+public enum BaseExceptionEnum {
 
-    SQL_EXCEPTION(500, "SQL异常"),
-    RUNNTIME_EXCEPTION(999, "运行时异常"),;
+    INSERT_ERROR(100, "新增失败"),
+    DELETE_ERROR(200, "删除失败"),
+    UPDATE_ERROR(300, "更新失败"),
+    QUERY_ERROR(400, "更新失败"),;
 
+    // 错误码
     private int code;
+    // 错误信
     private String message;
 
-    GlobalException(int code, String message) {
+    BaseExceptionEnum(int code, String message) {
         this.code = code;
         this.message = message;
     }

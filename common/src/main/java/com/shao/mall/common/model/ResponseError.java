@@ -24,6 +24,11 @@ public class ResponseError {
         this.message = message;
     }
 
+    public ResponseError(GlobalException e) {
+        this.code = e.getCode();
+        this.message = e.getMessage();
+    }
+
     @Override
     public String toString() {
         return "ResponseErrorEntity{" +
