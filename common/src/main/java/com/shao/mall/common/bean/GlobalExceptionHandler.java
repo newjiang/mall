@@ -1,6 +1,8 @@
 package com.shao.mall.common.bean;
 
 import com.shao.mall.common.exception.BaseException;
+import com.shao.mall.common.model.GlobalException;
+import com.shao.mall.common.model.ResponseError;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

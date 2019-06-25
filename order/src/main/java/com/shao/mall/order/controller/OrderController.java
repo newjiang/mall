@@ -1,48 +1,56 @@
 package com.shao.mall.order.controller;
 
+import com.github.pagehelper.PageInfo;
+import com.shao.mall.common.model.Page;
 import com.shao.mall.common.model.Result;
-import com.shao.mall.order.model.Order;
-import com.shao.mall.order.service.IOrderService;
+import com.shao.mall.order.api.controller.IOrderController;
+import com.shao.mall.order.api.model.Order;
+import com.shao.mall.order.api.service.IOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
+import java.util.List;
 
 /**
  * @author newjiang
  * @date 2019/5/21
- * @description:
+ * @description: 订单控制层接口实现
  */
 @RestController
-@RequestMapping("order")
-public class OrderController {
+public class OrderController implements IOrderController {
 
     @Autowired
     private IOrderService orderService;
 
-    @RequestMapping(method = RequestMethod.POST)
-    public Result<Order> add(Order order) {
+    @Override
+    public Result<Order> add(@RequestBody Order order) {
         orderService.add(order);
-        Order o = orderService.find(order.getOrderId());
-        return Result.success(o);
-    }
-
-    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
-    public Result<Order> delete(@PathVariable("id") int orderId) {
-        orderService.delete(orderId);
-        return Result.success();
-    }
-    @RequestMapping(method = RequestMethod.PUT)
-    public Result<Order> update(Order order){
-        Order update = orderService.update(order);
-        return Result.success(update);
-    }
-
-    @RequestMapping(value = "{id}", method = RequestMethod.GET)
-    public Result<Order> find(@PathVariable("id") int orderId){
-        Order order = orderService.find(orderId);
         return Result.success(order);
     }
 
+    @Override
+    public Result<?> delete(@RequestBody String id) {
+        orderService.delete(id);
+        return Result.success();
+    }
+
+    @Override
+    public Result<?> delete(@RequestBody List<String> ids) {
+        orderService.delete(ids);
+        return Result.success();
+    }
+
+    @Override
+    public Result<Order> update(@RequestBody Order order) {
+        orderService.update(order);
+        return Result.success(order);
+    }
+
+    @Override
+    public Result<PageInfo<Order>> query(Order order, @Valid Page page) {
+        PageInfo<Order> info = orderService.query(order, page);
+        return Result.success(info);
+    }
 }

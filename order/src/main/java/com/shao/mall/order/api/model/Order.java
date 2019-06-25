@@ -1,8 +1,9 @@
-package com.shao.mall.order.model;
+package com.shao.mall.order.api.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -10,20 +11,21 @@ import java.util.Date;
 /**
  * @author newjiang
  * @date 2019/5/21
- * @description:
+ * @description: 订单实体
  */
 @Setter
 @Getter
+@ToString
 public class Order implements Serializable {
 
     //订单
-    private int orderId;
+    private String orderId;
 
     //用户ID
-    private int userId;
+    private String userId;
 
     //订单状态
-    private int orderStatusId;
+    private String orderStatusId;
 
     //创建时间
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
@@ -43,6 +45,6 @@ public class Order implements Serializable {
     private double postCount;
 
     //支付方式
-    private int paymentType;
+    private String paymentType;
 
 }

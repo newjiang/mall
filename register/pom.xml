@@ -42,7 +42,7 @@
     </dependencies>
 
     <build>
-        <finalName>register</finalName>
+        <finalName>register-${profiles.active}-${parent.version}</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>

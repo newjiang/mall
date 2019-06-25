@@ -8,7 +8,7 @@
         <version>2.0.4.RELEASE</version>
         <relativePath />
     </parent>
-    
+
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.shao.mall</groupId>
     <artifactId>mall</artifactId>
@@ -63,7 +63,7 @@
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
-                <version>5.0.4</version>
+                <version>5.1.47</version>
             </dependency>
             <!-- 数据源 druid -->
             <dependency>
