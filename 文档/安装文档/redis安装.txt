@@ -1,0 +1,27 @@
+安装：
+1.创建redis目录放置编译文件
+	mkdir /usr/local/redis
+
+2.上传redis安装包到/usr/local/src/ ，并解压
+
+3.进入解压后的reidsxxx文件进行指定路径编译，指定编译路径
+	make PREFIX=/usr/local/redis install 
+	
+4.备份redis.conf并设置redis.conf文件的daemonize yes
+
+5.启动，进入/usr/local/redis/bin
+	./redis-server redis.conf
+
+6.启动脚手架
+	./redis-cli
+
+
+****************************************************
+
+
+配置文件redis.conf路径：/usr/local/redis/bin
+
+启动redis:
+	进入/usr/local/redis/bin
+	执行./redis-server redis.conf
+

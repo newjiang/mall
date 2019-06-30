@@ -1,0 +1,247 @@
+package own.jiang.mall.common.utils;
+
+
+import own.jiang.mall.common.exception.BaseException;
+import own.jiang.mall.common.model.Page;
+
+import java.beans.BeanInfo;
+import java.beans.IntrospectionException;
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * @author newjiang
+ * @date 2019/5/21
+ * @description: JavaBean 与 Map 互转的工具类
+ */
+public class BeanMap {
+
+    /**
+     * JavaBean 转 Map
+     *
+     * @param bean JavaBean
+     * @return
+     */
+    public static Map<String, Object> toMap(Object bean) {
+        return toMap(bean, false);
+    }
+
+    /**
+     * JavaBean 转 用于Sql的Map
+     *
+     * @param bean JavaBean
+     * @return  Key:大写,驼峰命名
+     */
+    public static Map<String, Object> toSqlMap(Object bean) {
+        return toMap(bean, true);
+    }
+
+    /**
+     * JavaBean 转 Map
+     * @param bean JavaBean
+     * @param b Key是否转大写驼峰命名
+     * @return
+     */
+    private static Map<String, Object> toMap(Object bean, boolean b) {
+
+        BeanInfo beanInfo = null;
+
+        if (bean == null) {
+            return null;
+        }
+
+        Map<String, Object> map = new HashMap<>();
+
+        try {
+            beanInfo = Introspector.getBeanInfo(bean.getClass());
+        } catch (IntrospectionException e) {
+            e.printStackTrace();
+        }
+
+        PropertyDescriptor[] ps = beanInfo.getPropertyDescriptors();
+
+        for (PropertyDescriptor pd : ps) {
+            String key = pd.getName();
+            if (!"class".equals(key)) {
+                Method getter = pd.getReadMethod();
+                Object value = null;
+                try {
+                    value = getter.invoke(bean);
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+                if (b) {
+                    map.put(toUnderline(key), value);
+                } else {
+                    map.put(key, value);
+                }
+            }
+        }
+
+        return map;
+    }
+
+    /**
+     * 驼峰转换为下划线
+     *
+     * @param column 行
+     * @return 转化后的数据
+     */
+    private static String toUnderline(String column) {
+
+        StringBuilder result = new StringBuilder();
+
+        if (column != null && column.length() > 0) {
+
+            for (int i = 0; i < column.length(); i++) {
+                char ch = column.charAt(i);
+                if (Character.isUpperCase(ch)) {
+                    result.append("_");
+                    result.append(ch);
+                } else {
+                    result.append(ch);
+                }
+            }
+
+        }
+        return result.toString().toUpperCase();
+    }
+
+    /**
+     * Map 转 JavaBean
+     *
+     * @param clazz
+     * @param map
+     * @param <T>
+     * @return
+     */
+    @SuppressWarnings({"rawtypes", "unchecked", "hiding"})
+    public static <T> T toBean(Class<T> clazz, Map<String, Object> map) {
+        try {
+            // 获取javaBean属性
+            BeanInfo beanInfo = Introspector.getBeanInfo(clazz);
+            // 创建 JavaBean 对象
+            Object obj = clazz.newInstance();
+
+            PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();
+
+            if (propertyDescriptors != null && propertyDescriptors.length > 0) {
+                // 属性
+                String field = null;
+                // 属性的值
+                Object value = null;
+                for (PropertyDescriptor pd : propertyDescriptors) {
+                    field = pd.getName();
+                    Method method = pd.getReadMethod();
+                    String type = method.getReturnType().getTypeName();
+                    if (map.containsKey(field) && !field.equals("class")) {
+                        value = map.get(field);
+                        switch (type) {
+                            case "boolean":
+                            case "java.lang.Boolean":
+                                boolean _boolean = Boolean.valueOf(value.toString());
+                                pd.getWriteMethod().invoke(obj, _boolean);
+                                break;
+                            case "byte":
+                            case "java.lang.Byte":
+                                byte _byte = Byte.valueOf(value.toString());
+                                pd.getWriteMethod().invoke(obj, _byte);
+                                break;
+                            case "char":
+                            case "java.lang.Character":
+                                char _char = value.toString().charAt(0);
+                                pd.getWriteMethod().invoke(obj, _char);
+                                break;
+                            case "short":
+                            case "java.lang.Short":
+                                short _short = Short.valueOf(value.toString());
+                                pd.getWriteMethod().invoke(obj, _short);
+                                break;
+                            case "int":
+                            case "java.lang.Integer":
+                                int _int = Integer.valueOf(value.toString());
+                                pd.getWriteMethod().invoke(obj, _int);
+                                break;
+                            case "float":
+                            case "java.lang.Float":
+                                float _float = Float.valueOf(value.toString());
+                                pd.getWriteMethod().invoke(obj, _float);
+                                break;
+                            case "long":
+                            case "java.lang.Long":
+                                long _long = Long.valueOf(value.toString());
+                                pd.getWriteMethod().invoke(obj, _long);
+                                break;
+                            case "double":
+                            case "java.lang.Double":
+                                double _double = Double.valueOf(value.toString());
+                                pd.getWriteMethod().invoke(obj, _double);
+                                break;
+                            default:
+                                pd.getWriteMethod().invoke(obj, value);
+                                break;
+                        }
+                    }
+                }
+                return (T) obj;
+            }
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (IntrospectionException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        } catch (ClassCastException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * Map 转 Page<T>
+     *
+     * @param clazz
+     * @param map
+     * @param <T>
+     * @return
+     */
+    public static <T> Page<T> toPage(Class<T> clazz, Map<String, Object> map) {
+        T bean = toBean(clazz, map);
+        int size = 1;
+        int no = 1;
+        boolean isTotal = false;
+        try {
+            if (map.containsKey("pageSize")) {
+                size = Integer.valueOf(map.get("pageSize").toString());
+                if (size > 200 || size < 1) {
+                    throw new BaseException("页数最小为1，最大为200");
+                }
+            }
+            if (map.containsKey("pageNo")) {
+                no = Integer.valueOf(map.get("pageNo").toString());
+                if (no < 1) {
+                    throw new BaseException("页号必须大于0");
+                }
+            }
+            if (map.containsKey("isTotal")) {
+                isTotal = Boolean.valueOf(map.get("isTotal").toString());
+            }
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        } catch (ClassCastException e) {
+            e.printStackTrace();
+        }
+        return new Page(no, size, isTotal, bean);
+    }
+
+}
