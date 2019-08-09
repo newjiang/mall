@@ -10,6 +10,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>user-server</artifactId>
-
+    <dependencies>
+        <dependency>
+            <groupId>com.jiang</groupId>
+            <artifactId>user-api</artifactId>
+            <version>${parent.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>

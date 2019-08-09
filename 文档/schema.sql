@@ -20,10 +20,10 @@ CREATE TABLE `t_activity` (
   `preview_time` TIMESTAMP NULL DEFAULT NULL COMMENT '预告时间',
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`activity_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='活动表';
 
@@ -45,10 +45,10 @@ CREATE TABLE `t_address` (
   `status` VARCHAR(10) COLLATE utf8_bin DEFAULT NULL COMMENT '地址状态',
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`address_id`),
   KEY `index_user_id` (`user_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='地址表';
@@ -66,10 +66,10 @@ CREATE TABLE `t_attribute` (
   `attribute_name` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '属性名称',
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`attribute_id`),
   KEY `index_sort_id` (`sort_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='属性表';
@@ -87,10 +87,10 @@ CREATE TABLE `t_attribute_item` (
   `attribute_value` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '属性的值',
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`attribute_item_id`),
   KEY `index_attribute_id` (`attribute_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='属性选项表';
@@ -106,10 +106,10 @@ CREATE TABLE `t_attribute_item_spu` (
   `attribute_item_id` BIGINT(18) UNSIGNED DEFAULT NULL,
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`attr_sku_id`),
   KEY `index_attribute_item_id` (`attribute_item_id`),
   KEY `index_spu_id` (`spu_id`)
@@ -129,10 +129,10 @@ CREATE TABLE `t_auth` (
   `auth_level` INT(11) DEFAULT NULL COMMENT '权限等级',
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`auth_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='权限表';
 
@@ -152,10 +152,10 @@ CREATE TABLE `t_brand` (
   `letter` CHAR(1) COLLATE utf8_bin DEFAULT NULL COMMENT '品牌首字母',
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`brand_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='品牌表';
 
@@ -174,10 +174,10 @@ CREATE TABLE `t_cart` (
   `count` INT(11) DEFAULT NULL COMMENT '数量',
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`cart_id`),
   KEY `index_user_id` (`user_id`),
   KEY `index_sku_id` (`sku_id`)
@@ -198,10 +198,10 @@ CREATE TABLE `t_collection` (
   `create_time` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`collection_id`),
   KEY `index_user_id` (`user_id`),
   KEY `index_sku_id` (`sku_id`)
@@ -227,10 +227,10 @@ CREATE TABLE `t_coupon` (
   `end_time` TIMESTAMP NULL DEFAULT NULL COMMENT '结束时间',
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`coupon_id`),
   KEY `index_activity_id` (`activity_id`),
   KEY `index_shop_id` (`shop_id`)
@@ -264,10 +264,10 @@ CREATE TABLE `t_evaluation` (
   `like_count` INT(11) DEFAULT NULL COMMENT '点赞数',
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`eval_id`),
   KEY `index_order_item_id` (`order_item_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='评价表';
@@ -286,10 +286,10 @@ CREATE TABLE `t_footprint` (
   `create_time` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`footprint_id`),
   KEY `index_sku_id` (`sku_id`),
   KEY `index_user_id` (`user_id`)
@@ -316,10 +316,10 @@ CREATE TABLE `t_logistics` (
   `next_address` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '下一个详细城市',
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`logistics_id`),
   KEY `index_logistics_status_id` (`logistics_status_id`),
   KEY `index_order_item_id` (`order_item_id`)
@@ -337,10 +337,10 @@ CREATE TABLE `t_logistics_status` (
   `logistics_code` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '物流码',
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`logistics_status_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='物流状态ID';
 
@@ -363,10 +363,10 @@ CREATE TABLE `t_merchant` (
   `merchant_status` INT(11) DEFAULT NULL COMMENT '商家状态',
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`merchant_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='商家表';
 
@@ -392,10 +392,10 @@ CREATE TABLE `t_order` (
   `payment_type` INT(11) DEFAULT NULL COMMENT '支付方式',
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`order_id`),
   KEY `index_user_id` (`user_id`),
   KEY `index_order_status_id` (`order_status_id`)
@@ -420,10 +420,10 @@ CREATE TABLE `t_order_item` (
   `message` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '留言',
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`order_item_id`),
   KEY `index_sku_id` (`sku_id`),
   KEY `index_order_id` (`order_id`),
@@ -442,10 +442,10 @@ CREATE TABLE `t_order_status` (
   `order_code` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '订单状态码',
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`order_status_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='订单状态表';
 
@@ -466,10 +466,10 @@ CREATE TABLE `t_payment` (
   `pay_time` TIMESTAMP NULL DEFAULT NULL COMMENT '支付时间',
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`pay_id`),
   KEY `index_order_id` (`order_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='支付表';
@@ -488,10 +488,10 @@ CREATE TABLE `t_role` (
   `role_code` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '角色码',
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`role_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='角色表';
 
@@ -506,10 +506,10 @@ CREATE TABLE `t_role_auth` (
   `role_id` BIGINT(18) UNSIGNED DEFAULT NULL COMMENT '角色ID',
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`role_auth_id`),
   KEY `index_role_id` (`role_id`),
   KEY `index_auth_id` (`auth_id`)
@@ -539,10 +539,10 @@ CREATE TABLE `t_shop` (
   `shop_status` INT(11) DEFAULT NULL COMMENT '店铺状态',
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`shop_id`),
   KEY `index_merchant_id` (`merchant_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='店铺表';
@@ -557,10 +557,10 @@ CREATE TABLE `t_shop_activity` (
   `activity_id` BIGINT(18) UNSIGNED DEFAULT NULL COMMENT '活动ID',
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`shop_activity_id`),
   KEY `index_shop_id` (`shop_id`),
   KEY `index_activity_id` (`activity_id`)
@@ -577,10 +577,10 @@ CREATE TABLE `t_shop_sku` (
   `shop_id` BIGINT(18) UNSIGNED DEFAULT NULL COMMENT '店铺ID',
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`shop_sku_id`),
   KEY `index_shop_id` (`shop_id`),
   KEY `index_sku_id` (`sku_id`)
@@ -608,10 +608,10 @@ CREATE TABLE `t_sku` (
   `price` DECIMAL(10,0) DEFAULT NULL COMMENT '价格',
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`sku_id`),
   KEY `index_spu_id` (`spu_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='库存量单位表(Stock Keeping Unit)';
@@ -631,10 +631,10 @@ CREATE TABLE `t_sort` (
   `sort_level` TINYINT(4) DEFAULT NULL COMMENT '分类等级',
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`sort_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='分类表';
 
@@ -651,10 +651,10 @@ CREATE TABLE `t_spec_group` (
   `status` INT(11) DEFAULT NULL COMMENT '状态',
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`spec_group_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='规格组表';
 
@@ -670,10 +670,10 @@ CREATE TABLE `t_spec_item` (
   `spec_value` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '规格值',
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`spec_item_id`),
   KEY `index_spec_id` (`spec_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='规格选项表';
@@ -690,10 +690,10 @@ CREATE TABLE `t_spec_item_sku` (
   `sku_id` BIGINT(18) UNSIGNED DEFAULT NULL,
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`spec_item_sku_id`),
   KEY `index_spec_item_id` (`spec_item_id`),
   KEY `index_sku_id` (`sku_id`)
@@ -714,10 +714,10 @@ CREATE TABLE `t_specification` (
   `spec_name` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '参数名称',
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`spec_id`),
   KEY `index_sort_id` (`sort_id`),
   KEY `index_spec_group_id` (`spec_group_id`)
@@ -741,10 +741,10 @@ CREATE TABLE `t_spu` (
   `brand_id` BIGINT(18) UNSIGNED DEFAULT NULL COMMENT '品牌ID',
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`spu_id`),
   KEY `index_sort_id` (`sort_id`),
   KEY `index_brand_id` (`brand_id`)
@@ -774,10 +774,10 @@ CREATE TABLE `t_user` (
   `create_time` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间(注册时间)',
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`user_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='用户表';
 
@@ -792,10 +792,10 @@ CREATE TABLE `t_user_activity` (
   `activity_id` BIGINT(18) UNSIGNED DEFAULT NULL COMMENT '活动ID',
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`user_activity_id`),
   KEY `index_user_id` (`user_id`),
   KEY `index_activity_id` (`activity_id`)
@@ -812,10 +812,10 @@ CREATE TABLE `t_user_auth` (
   `auth_id` BIGINT(18) UNSIGNED DEFAULT NULL COMMENT '权限',
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`user_auth_id`),
   KEY `index_user_id` (`user_id`),
   KEY `index_auth_id` (`auth_id`)
@@ -832,10 +832,10 @@ CREATE TABLE `t_user_coupon` (
   `coupon_id` BIGINT(18) UNSIGNED DEFAULT NULL COMMENT '优惠ID',
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`user_coupon_id`),
   KEY `index_user_id` (`user_id`),
   KEY `index_coupon_id` (`coupon_id`)
@@ -855,10 +855,10 @@ CREATE TABLE `t_user_info` (
   `birthday` TIMESTAMP NULL DEFAULT NULL COMMENT '生日',
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`user_info_id`),
   KEY `index_user_id` (`user_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='用户信息表';
@@ -874,10 +874,10 @@ CREATE TABLE `t_user_role` (
   `role_id` BIGINT(18) UNSIGNED DEFAULT NULL COMMENT '角色表',
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`user_role_id`),
   KEY `index_user_id` (`user_id`),
   KEY `index_role_id` (`role_id`)
@@ -886,6 +886,7 @@ CREATE TABLE `t_user_role` (
 /**
  * 键值表
  */
+DROP TABLE IF EXISTS `t_key_value`;
 CREATE TABLE `t_key_value` (
   `id` BIGINT(20) NOT NULL COMMENT 'ID',
   `key` VARCHAR(100) COLLATE utf8_bin DEFAULT NULL COMMENT '键',
@@ -896,9 +897,9 @@ CREATE TABLE `t_key_value` (
   `number` INT(11) DEFAULT NULL COMMENT '序号',
   `creator_id` VARCHAR(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人ID',
   `creator` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
-  `creatorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
+  `createdTime` TIMESTAMP NULL DEFAULT NULL COMMENT '创建时间',
   `editor_id` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人ID',
   `editor` VARCHAR(255) COLLATE utf8_bin DEFAULT NULL COMMENT '最后修改人',
-  `editorTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
+  `editedTime` TIMESTAMP NULL DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`id`)
-) ENGINE=INNODB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='键值表'
+) ENGINE=INNODB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='键值表';
