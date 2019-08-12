@@ -123,7 +123,7 @@ public class BeanMap {
      * @return
      */
 
-    public static <T> T toBean(Class<T> clazz, Map<String, Object> map) {
+    public static <T> T toBean(Map<String, Object> map, Class<T> clazz) {
         try {
             Gson gson = new Gson();
             return gson.fromJson(gson.toJson(map), clazz);
@@ -132,6 +132,7 @@ public class BeanMap {
             throw new RuntimeException("Map转化成Bean异常");
         }
     }
+
     /**
      * Map 转 Page<T>
      *
@@ -140,8 +141,9 @@ public class BeanMap {
      * @param <T>
      * @return
      */
-    public static <T> Page<T> toPage(Class<T> clazz, Map<String, Object> map) {
-        T bean = toBean(clazz, map);
+    public static <T> Page<T> toPage(Map<String, Object> map, Class<T> clazz) {
+
+        T bean = toBean(map, clazz);
         int no = 1;
         int size = 10;
         boolean isTotal = false;

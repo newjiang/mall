@@ -19,7 +19,7 @@ import java.util.Date;
 public class User extends Entity implements Serializable {
 
     // 用户ID
-    private long userId;
+    private String userId;
 
     // 用户名
     private String username;
